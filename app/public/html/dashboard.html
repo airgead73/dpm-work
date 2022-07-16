@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sandbox</title>
+  <link rel="stylesheet" href="/main.css">
+  <script src="/bootstrap.bundle.min.js"></script>
+  <script src="/bundle.js" defer></script>
+</head>
+
+<body>
+
+  <header class="header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Tracker</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Start Shift</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Active Shift</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="main container">
+    <section class="row g-0">
+      <article class="article col-md-9">
+        <h2>shifts</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">date</th>
+              <th scope="col">items</th>
+              <th scope="col" colspan="2">rate</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>delete</td>
+              <td>update</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>delete</td>
+              <td>update</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td colspan="2">Larry the Bird</td>
+              <td>delete</td>
+              <td>update</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </article>
+      <hr class="rule mt-5 mb-5">
+      <aside class="aside col-md-3 bg-primary text-white">
+
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+              <div class="fw-bold">start new shift</div>
+            </div>
+            <span class="badge bg-primary rounded-pill"><i class="bi bi-plus-lg"></i></span>
+          </li>
+
+        </ul>
+
+
+      </aside>
+
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="footer__credit"><small>tracker &copy; 2022</small></p>
+  </footer>
+
+
+
+</body>
+
+</html>

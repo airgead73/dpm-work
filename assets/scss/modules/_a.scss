@@ -1,0 +1,144 @@
+$offwhite: mix(black, white, 1%);
+$offblack: mix(black, white, 90%);
+$navlink: mix(#1EAEDB, white, 25%);
+$layoutPadding: 40px;
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  color: $offblack;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: auto;
+  padding: {
+    left: $layoutPadding;
+    right: $layoutPadding;
+  }
+}
+
+.aside--left, .aside--right, .article {
+  flex-basis: auto;
+}
+
+.header,
+.footer {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+  background-color: $offblack;
+  color: $offwhite;
+  padding: {
+    left: $layoutPadding;
+    right: $layoutPadding;
+  }
+}
+
+.footer > p {
+  text-align: center;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  &__title a {
+    color: $navlink;
+    text-decoration: none;
+  }
+
+}
+
+.nav__list {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  left: 0;
+  right: 0;
+  padding-left: 0;
+  background-color: $offblack;
+  &.hide {
+    display: none;
+  }
+}
+
+.nav__item {
+  list-style: none;
+  text-align: center;
+  padding: {
+    top: 10px;
+    bottom: 10px;
+  }
+}
+
+.nav__link {
+  color: $navlink;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+
+/* Larger than mobile */
+@media (min-width: 400px) {}
+
+
+/* Larger than phablet (also point when grid becomes active) */
+@media (min-width: 550px) {}
+
+
+/* Larger than tablet */
+@media (min-width: 750px) {
+  .nav__btn {
+    display: none;
+  }
+  .nav__list {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-basis: auto;
+    left: auto;
+    right: auto;
+    &.hide {
+      display: flex;
+    }
+  }
+
+  .nav__item {
+    padding: {
+      left: 12px;
+      right: 12px;
+    }
+  }
+  .main {
+    flex-direction: row;
+  }
+
+  .aside--left {
+    flex: 2.5;
+  }
+  
+  .aside--right {
+    flex: 2.5;
+  }
+  .article {
+    flex: 5;
+  }
+}
+
+/* Larger than desktop */
+@media (min-width: 1000px) {}
+
+
+/* Larger than Desktop HD */
+@media (min-width: 1200px) {}
+
+

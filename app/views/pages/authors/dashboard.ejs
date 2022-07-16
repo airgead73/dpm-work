@@ -1,0 +1,42 @@
+<%- include ('../../partials/head') %>
+  <%- include ('../../partials/header') %>
+
+    <aside class="aside aside--left">
+      <h3 class="aside__title">
+        <a href="/authors/add">add new author</a>
+      </h3>
+    </aside>
+    <article class="article">
+      <h2 class="article__title">Author Dashboard</h2>
+      <% if(count> 1) { %>
+        <p>There are <%= authors.length %> authors.</p>
+
+        <ul>
+          <% authors.forEach(author=> { %>
+
+            <li><span class="capitalize">
+                <%= author.fname %>
+                  <%= author.lname %>
+              </span>
+              <a href="/authors/<%= author.id %>">
+                detail
+              </a>&nbsp;
+              <a href="/authors/<%= author.id %>/update">
+                update
+              </a>
+              <button type="button" data-fetch data-method="DELETE" data-action="/api/authors/<% author.id %>"
+                data-enctype="application/x-www-form-urlencoded" name="delete_author">delete</button>
+            </li>
+
+            <% }) %>
+        </ul>
+
+        <% } else { %>
+          <p>There are no authors.</p>
+          <% } %>
+    </article>
+    <aside class="aside aside--right">
+      <h3 class="aside__title">right bar</h3>
+    </aside>
+
+    <%- include('../../partials/footer') %>

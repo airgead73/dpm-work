@@ -1,0 +1,35 @@
+<%- include ('../../partials/head') %>
+  <%- include ('../../partials/header') %>
+
+    <aside class="aside aside--left">
+      <h3 class="aside__title">left bar</h3>
+    </aside>
+    <article class="article">
+      <h2 class="article__title">Add Photo</h2>
+
+      <form id="photo_add" data-form="photo" method="POST" action="/api/photos">
+        <div class="row">
+          <div class="four columns">
+            <label for="fname">first name</label>
+            <input class="u-full-width" type="text" placeholder="type first name here" id="fname" name="fname">
+          </div>
+          <div class="four columns">
+            <label for="lname">last name</label>
+            <input class="u-full-width" type="text" placeholder="type last name here" id="lname" name="lname">
+          </div>
+          <div class="four columns">
+            <label for="dob">date of birth</label>
+            <input class="u-full-width" type="date" id="dob" name="dob">
+          </div>
+
+        </div>
+        <input class="button-primary" type="submit" value="add photo">
+        <input class="button-primary" type="reset" value="add reset">
+      </form>
+    </article>
+    <aside class="aside aside--right">
+      <h3 class="aside__title">right bar</h3>
+    </aside>
+
+
+    <%- include('../../partials/footer') %>

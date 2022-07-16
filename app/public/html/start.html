@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sandbox</title>
+  <link rel="stylesheet" href="/main.css">
+  <script src="/bootstrap.bundle.min.js"></script>
+  <script src="/bundle.js" defer></script>
+</head>
+
+<body>
+
+  <header class="header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Tracker</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Start Shift</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Active Shift</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="main container">
+    <section class="row">
+      <article class="col-md-7">
+        <form class="row">
+          <legend class="col-md-12 mb-3">
+            <h2>Start Shift</h2>
+          </legend>
+          <div class="col-md-7 mb-3">
+            <label for="date" class="form-label">date</label>
+            <input type="datetime-local" class="form-control" id="date" name="date">
+          </div>
+          <div class="col-md-5 mb-3">
+            <label for="floor" class="form-label">floor</label>
+            <input type="number" class="form-control" id="floor" name="floor" min="2" max="5">
+          </div>
+          <div class="col-md-12 mb-3">
+            <button type="submit" class="btn btn-primary">add</button>
+          </div>
+
+        </form>
+      </article>
+      <aside class="shifts col-md-5">
+        <h3>recent shifts</h3>
+      </aside>
+
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="footer__credit"><small>tracker &copy; 2022</small></p>
+  </footer>
+
+
+
+</body>
+
+</html>
