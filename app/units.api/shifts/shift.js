@@ -8,6 +8,10 @@ const shiftSchema = mongoose.Schema({
     type: Date,
     required: [true, ['Please, add date.']]
   },
+  items: {
+    type: Number,
+    default: 0
+  },
   floor: {
     type: Number,
     required: [true, 'Please, add floor.']

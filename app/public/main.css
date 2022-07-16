@@ -608,6 +608,8 @@ header {
   top: auto;
   left: auto;
   width: auto;
+  padding-top: 15px;
+  padding-bottom: 15px;
   padding-left: 15px;
   padding-right: 15px;
   background-color: #b7410e;
@@ -674,11 +676,13 @@ main {
   flex: 1;
   display: flex;
   flex-direction: column;
+  padding-top: 15px;
 }
 @media screen and (min-width: 1024px) {
   main {
     flex-direction: row;
     margin-left: 250px;
+    padding-top: 0;
   }
 }
 

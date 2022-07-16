@@ -16,6 +16,8 @@ header {
   left: auto;
   width: auto;
   padding: {
+    top: $layoutPadding;
+    bottom: $layoutPadding;
     left: $layoutPadding;
     right: $layoutPadding;
   }
@@ -79,9 +81,11 @@ main {
   flex: 1;
   display: flex;
   flex-direction: column;
+  padding-top: $layoutPadding;
   @include device(lg) {
     flex-direction: row;
     margin-left: $leftBar;
+    padding-top: 0;
   }
 }
 
