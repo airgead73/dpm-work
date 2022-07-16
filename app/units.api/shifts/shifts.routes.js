@@ -3,7 +3,7 @@ const shiftRouter = Router();
 const Shift = require('./shift');
 
 // controllers
-const { create, read, detail, update, remove } = require('./authors.controller');
+const { create, read, detail, update, remove } = require('./shifts.controller');
 
 // middleware
 const { validationRules, validate } = require('../../middleware');

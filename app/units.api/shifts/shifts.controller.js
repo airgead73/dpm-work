@@ -1,9 +1,9 @@
 const asyncHandler = require('express-async-handler');
-const Author = require('./author');
+const Shift = require('./shift');
 
 /**
- * @desc Create author
- * @route POST - /api/authors
+ * @desc Create shift
+ * @route POST - /api/shifts
  * @access Private
  * */
 
@@ -12,15 +12,15 @@ exports.create = asyncHandler(async (req, res, next) => {
   const { success, errors } = res.val_results;
 
   if(success) {
-    const author = new Author(req.body);
-    await author.save();
+    const shift = new Shift(req.body);
+    await shift.save();
 
     return res
     .status(200)
     .json({
       success: true,
-      message: `Author created: ${author.fname} ${author.lname}.`,
-      author
+      message: `Shift created: ${shift.date_formatted}.`,
+      shift
     });
 
   } else {
@@ -37,28 +37,28 @@ exports.create = asyncHandler(async (req, res, next) => {
 });
 
 /**
- * @desc Read authors
- * @route GET - /api/authors
+ * @desc Read shifts
+ * @route GET - /api/shifts
  * @access Private
  * */
 
  exports.read = asyncHandler(async (req, res, next) => {
 
-  const { success, count, data: authors } = res.results;
+  const { success, count, data: shifts } = res.results;
 
   return res
     .status(200)
     .json({
       success,
       count,
-      authors
+      shifts
     });
 
 });
 
 /**
- * @desc Read author detail
- * @route GET - /api/authors/:id
+ * @desc Read shift detail
+ * @route GET - /api/shifts/:id
  * @access Private
  * */
 
@@ -68,14 +68,14 @@ exports.create = asyncHandler(async (req, res, next) => {
     .status(200)
     .json({
       success: true,
-      message: 'GET author detail'
+      message: 'GET shift detail'
     });
 
 });
 
 /**
- * @desc Update author
- * @route PUT - /api/authors/:id
+ * @desc Update shift
+ * @route PUT - /api/shifts/:id
  * @access Private
  * */
 
@@ -85,7 +85,7 @@ exports.create = asyncHandler(async (req, res, next) => {
     .status(200)
     .json({
       success: true,
-      message: 'PUT author'
+      message: 'PUT shift'
     });
 
 });

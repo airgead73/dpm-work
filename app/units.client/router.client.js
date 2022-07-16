@@ -4,7 +4,7 @@ const { homeRouter } = require('./home');
 const { authorRouter } = require('./authors');
 const { bookRouter } = require('./books');
 const { photoRouter } = require('./photos');
-const { shiftRouter } = requirew('./shifts');
+const { shiftRouter } = require('./shifts');
 
 // middleware 
 const { checkAuthClient } = require('../middleware');
