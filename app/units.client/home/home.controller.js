@@ -9,11 +9,13 @@ const { isDev } = require('../../config/env');
 
 exports.home = asyncHandler(async (req, res, next) => {
 
-  return res
-    .status(200)
-    .render('pages/dashboard', {
-      title: 'work tracker',
-      development: isDev
-  });
+  // return res
+  //   .status(200)
+  //   .render('pages/dashboard', {
+  //     title: 'work tracker',
+  //     development: isDev
+  // });
+
+  res.redirect('/shifts');
 
 });
