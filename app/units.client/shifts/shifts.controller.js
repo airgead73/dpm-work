@@ -1,5 +1,4 @@
 const asyncHandler = require('express-async-handler');
-const Shift = require('../../units.api/shifts/shift');
 const { isDev } = require('../../config/env');
 
 /**

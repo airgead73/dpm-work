@@ -1,5 +1,5 @@
-const authorRouter = require('./authors.routes');
+const shiftRouter = require('./shifts.routes');
 
 module.exports = {
-  authorRouter
+  shiftRouter
 }

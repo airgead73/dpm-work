@@ -1,9 +1,12 @@
 const { body, validationResult } = require('express-validator');
-const { authorArray } = require('./validationArrays');
+const { authorArray, shiftArray } = require('./validationArrays');
  
 const validationRules = ($method) => {
 
   switch($method) {
+    case 'createShift':
+      return shiftArray;
+      break;
     case 'createAuthor':
       return authorArray;
       break;

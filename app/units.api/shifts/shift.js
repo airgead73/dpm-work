@@ -3,48 +3,41 @@ const format = require('date-fns/format');
 const slugify = require('slugify');
 const { capitalize } = require('../../util');
 
-const authorSchema = mongoose.Schema({
-  fname: {
-    type: String,
-    required: [true, ['Please, add first name.']],
-    maxlength: 50,
-    lowercase: true,
-    trim: true
-  },
-  lname: {
-    type: String,
-    required: [true, 'Please, add last name.'],
-    maxlength: 50,
-    lowercase: true,
-    trim: true
-  },
-  slug: {
-    type: String
-  },
-  dob: {
+const shiftSchema = mongoose.Schema({
+  date: {
     type: Date,
-    required: [true, ['Please, add dob.']]
+    required: [true, ['Please, add date.']]
+  },
+  floor: {
+    type: Number,
+    required: [true, 'Please, add floor.']
+  },
+  comments: {
+    type: String,
+    required: [true, 'Please, add comments.'],
+    maxlength: 200,
+    trim: true
   }
 
 }, {
   timestamps: true
 });
 
-authorSchema.set('toObject', { virtuals: true });
-authorSchema.set('toJSON', { virtuals: true });
+shiftSchema.set('toObject', { virtuals: true });
+shiftSchema.set('toJSON', { virtuals: true });
 
-authorSchema.pre("save", function(next) {
+// shiftSchema.pre("save", function(next) {
 
-  const fullname = `${this.lname} ${this.fname}`;
-  this.slug = slugify(fullname, {
-    replacement: '-',
-    lower: true,
-    trim: true
-  });
+//   const fullname = `${this.lname} ${this.fname}`;
+//   this.slug = slugify(fullname, {
+//     replacement: '-',
+//     lower: true,
+//     trim: true
+//   });
 
-  next();
+//   next();
 
-});
+// });
 
 // authorSchema.virtual('display').get(function() {
 
@@ -52,8 +45,8 @@ authorSchema.pre("save", function(next) {
 
 // });
 
-authorSchema.virtual('dob_formatted').get(function() {
-  return format(this.dob, 'MMMM d, yyyy')
+shiftSchema.virtual('date_formatted').get(function() {
+  return format(this.date, 'MMMM d, yyyy')
 });
 
-module.exports = mongoose.model('Author', authorSchema);
+module.exports = mongoose.model('Shift', shiftSchema);

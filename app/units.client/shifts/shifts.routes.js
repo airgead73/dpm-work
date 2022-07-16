@@ -1,18 +1,18 @@
 const { Router } = require('express');
-const authorRouter = Router();
-const Author = require('../../units.api/authors/author');
+const shiftRouter = Router();
+const Shift = require('../../units.api/shifts/shift');
 
 // controllers
-const { dashboard, add, detail, update } = require('./authors.controller');
+const { dashboard, add, detail, update } = require('./shifts.controller');
 
 // middleware
 const { handleQuery } = require('../../middleware');
 
 //routes
-authorRouter.route('/').get(handleQuery(Author), dashboard);
-authorRouter.route('/add').get(add);
-authorRouter.route('/:id').get(detail);
-authorRouter.route('/:id/update').get(update);
+shiftRouter.route('/').get(handleQuery(Shift), dashboard);
+shiftRouter.route('/add').get(add);
+shiftRouter.route('/:id').get(detail);
+shiftRouter.route('/:id/update').get(update);
 
 // export
-module.exports = authorRouter;
+module.exports = shiftRouter;
