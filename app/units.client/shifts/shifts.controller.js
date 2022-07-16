@@ -66,3 +66,18 @@ exports.dashboard = asyncHandler(async (req, res, next) => {
       development: isDev
     });
 });
+
+/**
+ * @desc shift add items view
+ * @route GET - /shifts/:id/items
+ * @access Private
+ * */
+
+ exports.items = asyncHandler(async (req, res, next) => {
+  return res
+    .status(200)
+    .render('pages/shifts/items', {
+      title: 'add items',
+      development: isDev
+    });
+});
