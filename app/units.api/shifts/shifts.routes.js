@@ -1,6 +1,6 @@
 const { Router } = require('express');
-const authorRouter = Router();
-const Author = require('./author');
+const shiftRouter = Router();
+const Shift = require('./shift');
 
 // controllers
 const { create, read, detail, update, remove } = require('./authors.controller');
@@ -10,8 +10,8 @@ const { validationRules, validate } = require('../../middleware');
 const { handleQuery } = require('../../middleware');
 
 // routes
-authorRouter.route('/').get(handleQuery(Author), read).post(validationRules('createAuthor'), validate, create);
-authorRouter.route('/:id').get(detail).put(update).delete(remove);
+shiftRouter.route('/').get(handleQuery(Shift), read).post(validationRules('createShift'), validate, create);
+shiftRouter.route('/:id').get(detail).put(update).delete(remove);
 
 // export
-module.exports = authorRouter;
+module.exports = shiftRouter;
