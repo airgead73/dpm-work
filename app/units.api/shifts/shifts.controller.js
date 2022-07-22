@@ -9,7 +9,7 @@ const Shift = require('./shift');
 
 exports.create = asyncHandler(async (req, res, next) => {
 
-  const { success, errors } = res.val_results;
+  const { success, errors } = res.val_result;
 
   if(success) {
     const shift = new Shift(req.body);
@@ -44,7 +44,7 @@ exports.create = asyncHandler(async (req, res, next) => {
 
  exports.read = asyncHandler(async (req, res, next) => {
 
-  const { success, count, data: shifts } = res.results;
+  const { success, count, data: shifts } = res.item_result;
 
   return res
     .status(200)
@@ -64,13 +64,13 @@ exports.create = asyncHandler(async (req, res, next) => {
 
  exports.detail = asyncHandler(async (req, res, next) => {
 
-  const { success, message, data: shift } = res.results;
+  const { success, data: shift } = res.item_result;
 
   return res
     .status(200)
     .json({
       success,
-      message,
+      message: "detail message",
       shift
     });
 
@@ -84,11 +84,14 @@ exports.create = asyncHandler(async (req, res, next) => {
 
  exports.update = asyncHandler(async (req, res, next) => {
 
+  const { success, data: shift } = res.item_result;
+
   return res
     .status(200)
     .json({
-      success: true,
-      message: 'PUT shift'
+      success,
+      message: "update message",
+      shift
     });
 
 });
@@ -101,11 +104,54 @@ exports.create = asyncHandler(async (req, res, next) => {
 
  exports.remove = asyncHandler(async (req, res, next) => {
 
+  const { success, data: shift } = res.item_result;
+
   return res
     .status(200)
     .json({
-      success: true,
-      message: 'DELETE author'
+      success,
+      message: "delete message",
+      shift
+    });
+
+});
+
+/**
+ * @desc Add shift units
+ * @route PUT - /api/shifts/:id/units
+ * @access Private
+ * */
+
+ exports.units = asyncHandler(async (req, res, next) => {
+
+  const { success, data: shift } = res.item_result;
+
+  return res
+    .status(200)
+    .json({
+      success,
+      message: "add units to shift",
+      shift
+    });
+
+});
+
+/**
+ * @desc Add shift units
+ * @route PUT - /api/shifts/:id/end
+ * @access Private
+ * */
+
+ exports.end = asyncHandler(async (req, res, next) => {
+
+  const { success, data: shift } = res.item_result;
+
+  return res
+    .status(200)
+    .json({
+      success,
+      message: "end shift",
+      shift
     });
 
 });
