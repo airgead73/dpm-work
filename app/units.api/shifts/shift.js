@@ -8,7 +8,7 @@ const shiftSchema = mongoose.Schema({
     type: Date,
     required: [true, ['Please, add date.']]
   },
-  items: {
+  units: {
     type: Number,
     default: 0
   },
@@ -21,6 +21,10 @@ const shiftSchema = mongoose.Schema({
     required: [true, 'Please, add comments.'],
     maxlength: 200,
     trim: true
+  },
+  active: {
+    type: Boolean,
+    default: true
   }
 
 }, {

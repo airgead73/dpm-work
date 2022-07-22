@@ -9,7 +9,7 @@ const Shift = require('./shift');
 
 exports.create = asyncHandler(async (req, res, next) => {
 
-  const { success, errors } = res.val_result;
+  const { success, errors } = res.val_results;
 
   if(success) {
     const shift = new Shift(req.body);
@@ -86,19 +86,21 @@ exports.create = asyncHandler(async (req, res, next) => {
 
   const { success, data: shift } = res.item_result;
 
+  const updatedShift = await Shift.findByIdAndUpdate(shift.id, req.body, { new: true });
+
   return res
     .status(200)
     .json({
       success,
-      message: "update message",
-      shift
+      message: `Shift updated: ${shift.date_formatted}`,
+      shift: updatedShift
     });
 
 });
 
 /**
- * @desc Delete author
- * @route DELETE - /api/authors/:id
+ * @desc Delete shift
+ * @route DELETE - /api/shifts/:id
  * @access Private
  * */
 
@@ -106,12 +108,32 @@ exports.create = asyncHandler(async (req, res, next) => {
 
   const { success, data: shift } = res.item_result;
 
+  shift.remove();
+
   return res
     .status(200)
     .json({
       success,
-      message: "delete message",
-      shift
+      message: `Shift has been deleted: ${shift.date_formatted}`
+    });
+
+});
+
+/**
+ * @desc drop all shifts
+ * @route DELETE - /api/shifts/drop
+ * @access Private
+ * */
+
+ exports.drop = asyncHandler(async (req, res, next) => {
+
+  await Shift.deleteMany({});
+
+  return res
+    .status(200)
+    .json({
+      success: true,
+      message: 'All shifts deleted.'
     });
 
 });
@@ -126,32 +148,40 @@ exports.create = asyncHandler(async (req, res, next) => {
 
   const { success, data: shift } = res.item_result;
 
+  let reqBody = {...req.body};
+  const { units: newUnits } = reqBody;
+
+  const totalUnits = parseInt(shift.units) + parseInt(newUnits);
+  reqBody.units = totalUnits;
+
+  const updatedShift = await Shift.findByIdAndUpdate(shift.id, reqBody, { new: true});
+
   return res
     .status(200)
     .json({
       success,
-      message: "add units to shift",
-      shift
+      message: `Added ${newUnits} units to ${shift.date_formatted}.`,
+      shift: updatedShift
     });
 
 });
 
 /**
- * @desc Add shift units
+ * @desc End shift
  * @route PUT - /api/shifts/:id/end
  * @access Private
  * */
 
  exports.end = asyncHandler(async (req, res, next) => {
 
-  const { success, data: shift } = res.item_result;
+  const endedShift = await Shift.findByIdAndUpdate(req.params.id, {"active": false}, { new: true });
 
   return res
     .status(200)
     .json({
-      success,
-      message: "end shift",
-      shift
+      success: true,
+      message: `Shift ended: ${endedShift.date_formatted}`,
+      shift: endedShift
     });
 
 });
