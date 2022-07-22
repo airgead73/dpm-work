@@ -44,7 +44,7 @@ exports.create = asyncHandler(async (req, res, next) => {
 
  exports.read = asyncHandler(async (req, res, next) => {
 
-  const { success, count, data: shifts } = res.item_result;
+  const { success, count, data: shifts } = res.results;
 
   return res
     .status(200)

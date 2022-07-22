@@ -11,11 +11,11 @@ const handleError = (err, req, res, next) => {
     message: err.message,
     status: statusCode,
     name: err.name,
-    response: err.response || null,
+    accept: req.header('Accept') || err.accept || null,
     stack: process.env.NODE_ENV === 'production' ? null : err.stack
   }
 
-  if(err.response === 'html') {
+  if(errorObject.accept === 'html') {
     return res
       .status(statusCode)
       .render('pages/error', {
@@ -23,8 +23,7 @@ const handleError = (err, req, res, next) => {
         status: statusCode,
         message: err.message,
         title: 'Error',
-        main: 'main--error',
-        development: isDev
+        main: 'main--error'
       })
   } else {
     return res

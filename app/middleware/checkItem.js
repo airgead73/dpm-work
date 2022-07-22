@@ -1,4 +1,4 @@
-const checkItem = ($model, $errorResponse) => async (req, res, next) => {
+const checkItem = ($model) => async (req, res, next) => {
 
   //check if item is found
   let item = await $model.findById(req.params.id);
@@ -7,7 +7,6 @@ const checkItem = ($model, $errorResponse) => async (req, res, next) => {
     if(!item) {
       const error = new Error('Item was not found.');
       error.status = 404;
-      error.response = $errorResponse;
       throw error;
     } else {
       res.item_result = {

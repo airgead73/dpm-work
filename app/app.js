@@ -69,7 +69,7 @@ app.use('/', clientRouter);
  app.use(function(req, res, next) {
   const error = new Error('Path not found.');
   error.status = 404;
-  error.response = 'html'
+  error.accept = 'html'
   next(error);
 });
 

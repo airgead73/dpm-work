@@ -11,9 +11,9 @@ const { handleQuery } = require('../../middleware');
 
 // routes
 shiftRouter.route('/').get(handleQuery(Shift), read).post(validationRules('createShift'), validate, create);
-shiftRouter.route('/units/:id').put(checkItem(Shift, 'json'), units);
-shiftRouter.route('/end/:id').put(checkItem(Shift, 'json'), end);
-shiftRouter.route('/:id').get(checkItem(Shift, 'json'), detail).put(checkItem(Shift, 'json'), update).delete(checkItem(Shift, 'json'), remove);
+shiftRouter.route('/units/:id').put(checkItem(Shift), units);
+shiftRouter.route('/end/:id').put(checkItem(Shift), end);
+shiftRouter.route('/:id').get(checkItem(Shift), detail).put(checkItem(Shift), update).delete(checkItem(Shift), remove);
 
 // export
 module.exports = shiftRouter;
