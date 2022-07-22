@@ -1,6 +1,6 @@
-const { isDev } = require('../config/env');
 const handleError = (err, req, res, next) => {
-  let statusCode = err.status || res.statusCode || 500;
+  const accept = req.header('Accept') || err.accept || 'html';
+  const statusCode = err.status || res.statusCode || 500;
   if(err.name === 'CastError') {
     err.message = 'Item cannot be found.'
     statusCode = 404
@@ -11,11 +11,10 @@ const handleError = (err, req, res, next) => {
     message: err.message,
     status: statusCode,
     name: err.name,
-    accept: req.header('Accept') || err.accept || null,
     stack: process.env.NODE_ENV === 'production' ? null : err.stack
   }
 
-  if(errorObject.accept === 'html') {
+  if(accept === 'html') {
     return res
       .status(statusCode)
       .render('pages/error', {

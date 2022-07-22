@@ -1,9 +1,8 @@
 const checkItem = ($model) => async (req, res, next) => {
 
-  //check if item is found
-  let item = await $model.findById(req.params.id);
-
   try {
+    //check if item is found
+    let item = await $model.findById(req.params.id);
     if(!item) {
       const error = new Error('Item was not found.');
       error.status = 404;
