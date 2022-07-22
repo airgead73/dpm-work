@@ -6,14 +6,14 @@ const Shift = require('../../units.api/shifts/shift');
 const { dashboard, add, detail, update, items } = require('./shifts.controller');
 
 // middleware
-const { handleQuery } = require('../../middleware');
+const { checkItem, handleQuery } = require('../../middleware');
 
 //routes
 shiftRouter.route('/').get(handleQuery(Shift), dashboard);
 shiftRouter.route('/add').get(add);
-shiftRouter.route('/:id').get(detail);
-shiftRouter.route('/:id/update').get(update);
-shiftRouter.route('/:id/items').get(items);
+shiftRouter.route('/:id').get(checkItem(Shift), detail);
+shiftRouter.route('/:id/update').get(checkItem(Shift), update);
+shiftRouter.route('/:id/items').get(checkItem(Shift), items);
 
 // export
 module.exports = shiftRouter;

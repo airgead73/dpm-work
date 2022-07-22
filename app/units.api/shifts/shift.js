@@ -34,27 +34,12 @@ const shiftSchema = mongoose.Schema({
 shiftSchema.set('toObject', { virtuals: true });
 shiftSchema.set('toJSON', { virtuals: true });
 
-// shiftSchema.pre("save", function(next) {
-
-//   const fullname = `${this.lname} ${this.fname}`;
-//   this.slug = slugify(fullname, {
-//     replacement: '-',
-//     lower: true,
-//     trim: true
-//   });
-
-//   next();
-
-// });
-
-// authorSchema.virtual('display').get(function() {
-
-//   const displayFirst = this.fname
-
-// });
-
 shiftSchema.virtual('date_formatted').get(function() {
   return format(this.date, 'MMMM d, yyyy')
+});
+
+shiftSchema.virtual('rate').get(function() {
+  return Math.round(this.units / 9.5);
 });
 
 module.exports = mongoose.model('Shift', shiftSchema);

@@ -44,10 +44,14 @@ exports.dashboard = asyncHandler(async (req, res, next) => {
  * */
 
  exports.detail = asyncHandler(async (req, res, next) => {
+
+  const { success, data: shift } = res.item_result;
+
   return res
     .status(200)
     .render('pages/shifts/detail', {
-      title: 'shift detail',
+      title: `${shift.date_formatted}`,
+      shift,
       development: isDev
     });
 });

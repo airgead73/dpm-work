@@ -1038,6 +1038,10 @@ td:last-child {
   padding-right: 0;
 }
 
+th {
+  font-weight: bold;
+}
+
 /* Spacing
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 button,

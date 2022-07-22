@@ -3,6 +3,37 @@
 
     <article>
       <h2>shift dashboard</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>date</th>
+            <th>units</th>
+            <th colspan="2">rate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% shifts.forEach(shift=> { %>
+
+            <tr id="<%= shift.id  %> ">
+              <td>
+                <a href="/shifts/<%= shift.id %>">
+                  <%= shift.date_formatted %>
+                </a>
+              </td>
+              <td>
+                <%= shift.units %>
+              </td>
+              <td>
+                <%= shift.rate %>
+              </td>
+              <td>
+                <button>X</button>
+              </td>
+            </tr>
+
+            <% }) %>
+        </tbody>
+      </table>
     </article>
     <aside>
       <h3>right bar</h3>

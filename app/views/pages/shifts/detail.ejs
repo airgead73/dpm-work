@@ -2,7 +2,15 @@
   <%- include ('../../partials/header') %>
 
     <article>
-      <h2>shift detail</h2>
+      <h2>
+        <%= shift.date_formatted %>
+      </h2>
+      <p>
+        <%= shift.units %> units, <%= shift.rate %> rate
+      </p>
+      <p>
+        <%= shift.comments %>
+      </p>
     </article>
     <aside>
       <h3>right bar</h3>
