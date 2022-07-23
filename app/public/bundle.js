@@ -37,7 +37,20 @@ const initButtons = () => {
 
 const assignButton = ($btn) => {
 
-  console.log('button has been clicked');
+  const buttonType = $btn.getAttribute('data-button');
+
+  switch(buttonType) {
+
+    case 'remove':
+      console.log('Button type is "remove".');
+      break;
+    case 'test':
+      console.log('Button type is "test".');
+      break;
+    default:
+      console.log('No button type is assigned.'); 
+
+  }
 
 };
 

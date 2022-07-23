@@ -1,5 +1,4 @@
 const asyncHandler = require('express-async-handler');
-const { isDev } = require('../../config/env');
 
 /**
  * @desc shift dashboard view
@@ -17,8 +16,7 @@ exports.dashboard = asyncHandler(async (req, res, next) => {
       title: 'shifts',
       success,
       count,
-      shifts,
-      development: isDev
+      shifts
     });
 });
 
@@ -32,8 +30,7 @@ exports.dashboard = asyncHandler(async (req, res, next) => {
   return res
     .status(200)
     .render('pages/shifts/add', {
-      title: 'add shift',
-      development: isDev
+      title: 'add shift'
     });
 });
 
@@ -51,8 +48,7 @@ exports.dashboard = asyncHandler(async (req, res, next) => {
     .status(200)
     .render('pages/shifts/detail', {
       title: `${shift.date_formatted}`,
-      shift,
-      development: isDev
+      shift
     });
 });
 
@@ -66,8 +62,7 @@ exports.dashboard = asyncHandler(async (req, res, next) => {
   return res
     .status(200)
     .render('pages/shifts/update', {
-      title: 'shifts',
-      development: isDev
+      title: 'update shift'
     });
 });
 
@@ -77,11 +72,29 @@ exports.dashboard = asyncHandler(async (req, res, next) => {
  * @access Private
  * */
 
- exports.items = asyncHandler(async (req, res, next) => {
+ exports.units = asyncHandler(async (req, res, next) => {
   return res
     .status(200)
-    .render('pages/shifts/items', {
-      title: 'add items',
-      development: isDev
+    .render('pages/shifts/units', {
+      title: 'add units'
     });
+});
+
+/**
+ * @desc active shift view
+ * @route GET - /shifts/active
+ * @access Private
+ * */
+
+ exports.active = asyncHandler(async (req, res, next) => {
+
+  // const { success, data: shift } = res.item_result;
+
+  // return res
+  //   .status(200)
+  //   .render('pages/shifts/detail', {
+  //     title: `${shift.date_formatted}`,
+  //     shift
+  //   });
+
 });
