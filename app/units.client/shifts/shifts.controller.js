@@ -1,4 +1,5 @@
 const asyncHandler = require('express-async-handler');
+const { isDev } = require('../../config/env');
 
 /**
  * @desc shift dashboard view
@@ -14,6 +15,7 @@ exports.dashboard = asyncHandler(async (req, res, next) => {
     .status(200)
     .render('pages/shifts/dashboard', {
       title: 'shifts',
+      development: isDev,
       success,
       count,
       shifts
@@ -30,7 +32,8 @@ exports.dashboard = asyncHandler(async (req, res, next) => {
   return res
     .status(200)
     .render('pages/shifts/add', {
-      title: 'add shift'
+      title: 'add shift',
+      development: isDev
     });
 });
 
@@ -48,6 +51,7 @@ exports.dashboard = asyncHandler(async (req, res, next) => {
     .status(200)
     .render('pages/shifts/detail', {
       title: `${shift.date_formatted}`,
+      development: isDev,
       shift
     });
 });
@@ -62,7 +66,8 @@ exports.dashboard = asyncHandler(async (req, res, next) => {
   return res
     .status(200)
     .render('pages/shifts/update', {
-      title: 'update shift'
+      title: 'update shift',
+      development: isDev,
     });
 });
 
@@ -81,6 +86,7 @@ exports.dashboard = asyncHandler(async (req, res, next) => {
   return res
     .status(200)
     .render('pages/shifts/units', {
-      title: 'add units'
+      title: 'add units',
+      development: isDev,
     });
 });
