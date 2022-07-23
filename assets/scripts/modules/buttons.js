@@ -21,14 +21,14 @@ const initButtons = () => {
 
 }
 
-const assignButton = ($btn) => {
+const assignButton = async ($btn) => {
 
   const buttonType = $btn.getAttribute('data-button');
 
   switch(buttonType) {
 
     case 'remove':
-      removeButton($btn);
+      handleRemove($btn);
       break;
     case 'test':
       testButton($btn);
@@ -40,11 +40,33 @@ const assignButton = ($btn) => {
 
 }
 
-const removeButton = ($btn) => {
+const handleRemove = async ($btn) => {
 
-  const itemId = $btn.getAttribute('data-remove');
+  console.log($btn);
 
-  console.log('item id', itemId);
+}
+
+const removeButton = async ($btn) => {
+
+  const url = $btn.getAttribute('data-remove');
+
+  const response = await fetch(url, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }
+  });
+
+  const data = response.json();
+
+  return data;
+
+}
+
+const handleResponse = ($data) => {
+
+  console.log($data);
 
 }
 

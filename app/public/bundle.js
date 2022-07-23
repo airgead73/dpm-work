@@ -35,14 +35,14 @@ const initButtons = () => {
 
 };
 
-const assignButton = ($btn) => {
+const assignButton = async ($btn) => {
 
   const buttonType = $btn.getAttribute('data-button');
 
   switch(buttonType) {
 
     case 'remove':
-      removeButton($btn);
+      handleRemove($btn);
       break;
     case 'test':
       testButton($btn);
@@ -54,11 +54,9 @@ const assignButton = ($btn) => {
 
 };
 
-const removeButton = ($btn) => {
+const handleRemove = async ($btn) => {
 
-  const itemId = $btn.getAttribute('data-remove');
-
-  console.log('item id', itemId);
+  console.log($btn);
 
 };
 
