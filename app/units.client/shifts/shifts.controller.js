@@ -1,4 +1,5 @@
 const asyncHandler = require('express-async-handler');
+const Shift = require('../../units.api/shifts/shift')
 const { isDev } = require('../../config/env');
 
 /**
@@ -79,14 +80,14 @@ exports.dashboard = asyncHandler(async (req, res, next) => {
 
  exports.units = asyncHandler(async (req, res, next) => {
 
-  const activeShift = await Shift.find({ active: true });
-
-  console.log(activeShift);
+  const activeShift = await Shift.findOne({ active: true });
+  console.log(activeShift)
 
   return res
     .status(200)
     .render('pages/shifts/units', {
       title: 'add units',
       development: isDev,
+      shift: activeShift
     });
 });

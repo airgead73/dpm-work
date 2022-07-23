@@ -42,15 +42,29 @@ const assignButton = ($btn) => {
   switch(buttonType) {
 
     case 'remove':
-      console.log('Button type is "remove".');
+      removeButton($btn);
       break;
     case 'test':
-      console.log('Button type is "test".');
+      testButton($btn);
       break;
     default:
-      console.log('No button type is assigned.'); 
+      console.log('No button type assigned.');
 
   }
+
+};
+
+const removeButton = ($btn) => {
+
+  const itemId = $btn.getAttribute('data-remove');
+
+  console.log('item id', itemId);
+
+};
+
+const testButton = ($btn) => {
+
+  console.log('Button type is "test".');
 
 };
 
