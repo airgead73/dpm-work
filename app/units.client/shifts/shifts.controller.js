@@ -79,22 +79,3 @@ exports.dashboard = asyncHandler(async (req, res, next) => {
       title: 'add units'
     });
 });
-
-/**
- * @desc active shift view
- * @route GET - /shifts/active
- * @access Private
- * */
-
- exports.active = asyncHandler(async (req, res, next) => {
-
-  // const { success, data: shift } = res.item_result;
-
-  // return res
-  //   .status(200)
-  //   .render('pages/shifts/detail', {
-  //     title: `${shift.date_formatted}`,
-  //     shift
-  //   });
-
-});
