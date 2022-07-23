@@ -11,11 +11,9 @@ const { checkItem, handleQuery } = require('../../middleware');
 //routes
 shiftRouter.route('/').get(handleQuery(Shift), dashboard);
 shiftRouter.route('/add').get(add);
-
+shiftRouter.route('/update/:id').get(checkItem(Shift), update);
+shiftRouter.route('/units/:id').get(checkItem(Shift), units);
 shiftRouter.route('/:id').get(checkItem(Shift), detail);
-shiftRouter.route('/:id/update').get(checkItem(Shift), update);
-shiftRouter.route('/:id/items').get(checkItem(Shift), units);
-
 
 // export
 module.exports = shiftRouter;

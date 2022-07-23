@@ -73,6 +73,11 @@ exports.dashboard = asyncHandler(async (req, res, next) => {
  * */
 
  exports.units = asyncHandler(async (req, res, next) => {
+
+  const activeShift = await Shift.find({ active: true });
+
+  console.log(activeShift);
+
   return res
     .status(200)
     .render('pages/shifts/units', {
