@@ -16,6 +16,6 @@ exports.home = asyncHandler(async (req, res, next) => {
   //     development: isDev
   // });
 
-  res.redirect('/shifts');
+  res.redirect('/shifts?sort=-date');
 
 });
