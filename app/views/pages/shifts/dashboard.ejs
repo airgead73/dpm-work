@@ -27,7 +27,8 @@
                 <%= shift.rate %>
               </td>
               <td>
-                <button type="button" data-button="remove" data-remove="/api/shifts/<%= shift.id %>">X</button>
+                <button type="button" data-button="remove" data-remove="/api/shifts/<%= shift.id %>"
+                  data-confirm="Do you want to remove shift <%= shift.date_formatted %>?">X</button>
               </td>
             </tr>
 

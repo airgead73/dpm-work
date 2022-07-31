@@ -30,9 +30,6 @@ const assignButton = async ($btn) => {
     case 'remove':
       handleRemove($btn);
       break;
-    case 'test':
-      testButton($btn);
-      break;
     default:
       console.log('No button type assigned.');
 
@@ -42,11 +39,19 @@ const assignButton = async ($btn) => {
 
 const handleRemove = async ($btn) => {
 
-  console.log($btn);
+  const text = $btn.getAttribute('data-confirm');
+  const shouldRemove = confirm(text);
+
+  if(shouldRemove) {
+    const data = await removeItem($btn);
+    handleResponse(data);
+  } else {
+    return;
+  }
 
 }
 
-const removeButton = async ($btn) => {
+const removeItem = async ($btn) => {
 
   const url = $btn.getAttribute('data-remove');
 
@@ -66,14 +71,13 @@ const removeButton = async ($btn) => {
 
 const handleResponse = ($data) => {
 
-  console.log($data);
+  const { success, message } = $data;
+
+  alert(message);
+  location.reload();
 
 }
 
-const testButton = ($btn) => {
 
-  console.log('Button type is "test".')
-
-}
 
 export default initButtons;
